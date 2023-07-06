@@ -24,7 +24,7 @@ app.use("/api/v1/users",router)
 app.use("/api/v1/task",taskRouter)
 
 app.get("/",(req,res)=>{
-    res.send("Nice Workingggggggg")
+    res.send("Nice Working")
 })
 // Using Error middleware
 app.use(erorrMiddleware)

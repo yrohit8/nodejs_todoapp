@@ -48,10 +48,18 @@ export const updateTask= async(req,res,next)=>{
     }
 }
 
-export const deleteTask= async(req,res,next)=>{
-    try {
-        
-    } catch (error) {
-        next(eoor)
-    }
-}
+export const deleteTask = async (req, res, next) => {
+  try {
+    const task = await Task.findById(req.params.id);
+
+    if (!task) return next(new ErrorHandler("Task not found", 404));
+    await task.deleteOne();
+
+    res.status(200).json({
+      message: "Task Deleted!",
+      success: true,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
